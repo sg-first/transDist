@@ -4,15 +4,13 @@ from scipy.optimize import fsolve
 
 def getNormVal(mean, sigma2, size, sampleNum, newDistMaxX):
     result=[]
-    toMovedX = lambda x: x - newDistMaxX
+    toMovedX = lambda x: x - (newDistMaxX-mean)
 
-    lastVal=toMovedX(0)
-    i=1
+    i=0
     while i<=size:
         iVal=toMovedX(i)
-        cdfSub=stat.norm.cdf(iVal,loc=mean,scale=sigma2)-stat.norm.cdf(lastVal,loc=mean,scale=sigma2)
+        cdfSub=stat.norm.cdf(iVal+0.5,loc=mean,scale=sigma2)-stat.norm.cdf(iVal-0.5,loc=mean,scale=sigma2)
         result.append(cdfSub*sampleNum)
-        lastVal=iVal
         i+=1
     return np.array(result)
 
@@ -59,4 +57,4 @@ def toUniform(dist2,newDistMaxX=None):
     return dist2_true_norm
 
 testList=[1,2,3,2,1]
-print(toUniform(testList,1))
+print(toNorm(testList))
