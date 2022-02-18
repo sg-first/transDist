@@ -5,7 +5,8 @@ Other common distributions are generated according to the mean and variance of t
 toNorm
 -------
 According to the mean and variance of any distribution, the corresponding normal distribution is generated. You can reset the peak position.
-![P1]转正态分布.png)
+
+![P1](转正态分布.png)
 
 toUniform
 ---------
