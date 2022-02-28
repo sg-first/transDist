@@ -23,7 +23,7 @@ def toNorm(dist,newDistMaxX=None):
     # 均值
     mean=0
     for i in range(size):
-        mean=toMovedX(i)*dist[i]
+        mean+=toMovedX(i)*dist[i]
     mean/=sampleNum
     # 方差
     sigma2=0
