@@ -7,7 +7,7 @@ def getNormVal(mean, sigma2, size, sampleNum, newDistMaxX):
     toMovedX = lambda x: x - (newDistMaxX-mean)
 
     i=0
-    while i<=size:
+    while i<size:
         iVal=toMovedX(i)
         cdfSub=stat.norm.cdf(iVal+0.5,loc=mean,scale=sigma2)-stat.norm.cdf(iVal-0.5,loc=mean,scale=sigma2)
         result.append(cdfSub*sampleNum)
