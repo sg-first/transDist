@@ -3,16 +3,16 @@ import scipy.stats as stat
 from scipy.optimize import fsolve
 
 def getNormVal(mean, sigma2, size, sampleNum, newDistMaxX):
-    result=[]
+    result=np.zeros((size,))
     toMovedX = lambda x: x - (newDistMaxX-mean)
 
     i=0
     while i<size:
         iVal=toMovedX(i)
         cdfSub=stat.norm.cdf(iVal+0.5,loc=mean,scale=sigma2)-stat.norm.cdf(iVal-0.5,loc=mean,scale=sigma2)
-        result.append(cdfSub*sampleNum)
+        result[i]=cdfSub*sampleNum
         i+=1
-    return np.array(result)
+    return result
 
 def toNorm(dist,newDistMaxX=None):
     size=len(dist)
