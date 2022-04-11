@@ -16,7 +16,6 @@ def getNormVal(mean, sigma2, size, sampleNum, newDistMaxX):
 
 def toNorm(dist,newDistMaxX=None):
     size=len(dist)
-    dist=np.array(dist)
     maxX=np.argmax(dist) # X轴向左平移多少
     toMovedX = lambda x: x - maxX
     sampleNum=np.sum(dist)
